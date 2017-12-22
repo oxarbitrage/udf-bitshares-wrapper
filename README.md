@@ -2,12 +2,11 @@
 
 UDF protocol is needed to build DEX market charts with TradingView.
 
-This wrapper will expose udf calls y calling a bitshares witness node to get data from the dex.
+This wrapper will expose an udf API set by calling a bitshares witness node with `market_history` plugin enabled to get data from the dex.
 
 ## Online demo
 
 http://open-explorer.io/tradingview/
-
 
 ## Basic run:
 ```
@@ -18,15 +17,17 @@ flask run --host=0.0.0.0 --port=5001
 
 ## API Calls
 
-http://23.94.69.140:5001/config
+The following calls are exposed and needed for TradingView to display bitshares dex charts:
 
-http://23.94.69.140:5001/symbols?symbol=BTS_USD
+- `/config` -  http://23.94.69.140:5001/config
 
-http://23.94.69.140:5001/history?symbol=BTS_USD&resolution=D&from=1513092731&to=1513956731
+- `/symbols` - http://23.94.69.140:5001/symbols?symbol=BTS_USD
 
-http://23.94.69.140:5001/search?limit=30&query=BLOCK&type=&exchange=
+- `/history` - http://23.94.69.140:5001/history?symbol=BTS_USD&resolution=D&from=1513092731&to=1513956731
 
-http://23.94.69.140:5001/time
+- `/search` - http://23.94.69.140:5001/search?limit=30&query=BLOCK&type=&exchange=
+
+- `/time` - http://23.94.69.140:5001/time
 
 
 
