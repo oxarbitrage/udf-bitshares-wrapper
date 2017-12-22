@@ -1,6 +1,8 @@
 # The bitshares udf wrapper
 
-UDF protocol is needed to build DEX market charts with TradingView. 
+UDF protocol is needed to build DEX market charts with TradingView.
+
+This wrapper will expose udf calls y calling a bitshares witness node to get data from the dex.
 
 ## Online demo
 
