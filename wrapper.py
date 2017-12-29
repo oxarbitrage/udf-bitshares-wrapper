@@ -24,6 +24,8 @@ postgres_username = 'postgres'
 postgres_password = 'posta'
 # end postgres
 
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=5001)
 
 @app.route('/config')
 def config():
