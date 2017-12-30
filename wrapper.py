@@ -170,6 +170,15 @@ def history():
     quote_id = j_l["result"][0]["id"]
     quote_precision = 10**j_l["result"][0]["precision"]
 
+
+    base_1, base_2, base_3 = base_id.split('.')
+    quote_1, quote_2, quote_3 = quote_id.split('.')
+    divide = False
+    if int(base_3) > int(quote_3):
+        divide = True
+        #base_id, quote_id = quote_id, base_id
+        base_precision, quote_precision = quote_precision, base_precision
+
     #print base_precision
     #print quote_precision
 
@@ -204,11 +213,18 @@ def history():
         close_base = float(j_l["result"][w]["close_base"])
         base_volume = int(j_l["result"][w]["base_volume"])
 
-        open = 1/(float(open_base/base_precision)/float(open_quote/quote_precision))
-        high = 1/(float(high_base/base_precision)/float(high_quote/quote_precision))
-        low = 1/(float(low_base/base_precision)/float(low_quote/quote_precision))
-        close = 1/(float(close_base/base_precision)/float(close_quote/quote_precision))
-        volume = quote_volume
+        if divide:
+            open = 1/(float(open_base/base_precision)/float(open_quote/quote_precision))
+            high = 1/(float(high_base/base_precision)/float(high_quote/quote_precision))
+            low = 1/(float(low_base/base_precision)/float(low_quote/quote_precision))
+            close = 1/(float(close_base/base_precision)/float(close_quote/quote_precision))
+            volume = quote_volume
+        else:
+            open = (float(open_base/base_precision)/float(open_quote/quote_precision))
+            high = (float(high_base/base_precision)/float(high_quote/quote_precision))
+            low = (float(low_base/base_precision)/float(low_quote/quote_precision))
+            close = (float(close_base/base_precision)/float(close_quote/quote_precision))
+            volume = quote_volume
 
         c.append(close)
         o.append(open)
@@ -249,11 +265,18 @@ def history():
             close_base = float(j_l["result"][w]["close_base"])
             base_volume = int(j_l["result"][w]["base_volume"])
 
-            open = 1/(float(open_base / base_precision) / float(open_quote / quote_precision))
-            high = 1/(float(high_base / base_precision) / float(high_quote / quote_precision))
-            low = 1/(float(low_base / base_precision) / float(low_quote / quote_precision))
-            close = 1/(float(close_base / base_precision) / float(close_quote / quote_precision))
-            volume = quote_volume
+            if divide:
+                open = 1 / (float(open_base / base_precision) / float(open_quote / quote_precision))
+                high = 1 / (float(high_base / base_precision) / float(high_quote / quote_precision))
+                low = 1 / (float(low_base / base_precision) / float(low_quote / quote_precision))
+                close = 1 / (float(close_base / base_precision) / float(close_quote / quote_precision))
+                volume = quote_volume
+            else:
+                open = (float(open_base / base_precision) / float(open_quote / quote_precision))
+                high = (float(high_base / base_precision) / float(high_quote / quote_precision))
+                low = (float(low_base / base_precision) / float(low_quote / quote_precision))
+                close = (float(close_base / base_precision) / float(close_quote / quote_precision))
+                volume = quote_volume
 
             c.append(close)
             o.append(open)
