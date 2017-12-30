@@ -218,7 +218,7 @@ def history():
             high = 1/(float(high_base/base_precision)/float(high_quote/quote_precision))
             low = 1/(float(low_base/base_precision)/float(low_quote/quote_precision))
             close = 1/(float(close_base/base_precision)/float(close_quote/quote_precision))
-            volume = quote_volume
+            volume = base_volume
         else:
             open = (float(open_base/base_precision)/float(open_quote/quote_precision))
             high = (float(high_base/base_precision)/float(high_quote/quote_precision))
@@ -276,7 +276,7 @@ def history():
                 high = (float(high_base / base_precision) / float(high_quote / quote_precision))
                 low = (float(low_base / base_precision) / float(low_quote / quote_precision))
                 close = (float(close_base / base_precision) / float(close_quote / quote_precision))
-                volume = quote_volume
+                volume = base_volume
 
             c.append(close)
             o.append(open)
