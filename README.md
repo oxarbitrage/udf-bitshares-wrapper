@@ -10,7 +10,7 @@ http://open-explorer.io/tradingview/
 
 ## Basic run:
 ```
-git clone https://github.com/oxarbitrage/bitshares-udf-wrapper.git
+git clone https://github.com/oxarbitrage/udf-bitshares-wrapper.git
 export FLASK_APP=wrapper.py
 flask run --host=0.0.0.0 --port=5001
 ```
