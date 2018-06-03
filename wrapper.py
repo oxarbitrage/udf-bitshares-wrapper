@@ -9,12 +9,20 @@ import datetime
 import time
 import calendar
 
+from flasgger import Swagger
+
 websocket_url = "ws://localhost:8090/ws"
 ws = create_connection(websocket_url)
 
 app = Flask(__name__)
 from flask_cors import CORS, cross_origin
 CORS(app)
+
+app.config['SWAGGER'] = {
+    'title': 'BTS UDF Wrapper',
+    'uiversion': 2
+}
+Swagger(app, template_file='wrapper.yaml')
 
 # postgres
 import psycopg2

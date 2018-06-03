@@ -1,0 +1,153 @@
+info:
+  description: Tradingview UDF wrapper for bitshares
+  title: Bitshares UDF python implementation
+version: 1
+swagger: '2.0'
+
+paths:
+  "/config":
+    get:
+      description: Get bitshares chart data configuration
+      operationId: config
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Configuration array
+        500:
+          description: Error processing parameters
+      schemes:
+        - http
+        - https
+      tags:
+        - udf
+  "/symbols":
+    get:
+      description: Get information about an asset(symbol)
+      operationId: symbols
+      parameters:
+        - in: query
+          name: symbol
+          default: BTS_USD
+          schema:
+            type: string
+          required: true
+          description: Market in the form BASE_QUOTE
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Information about a market
+        500:
+          description: Error processing parameters
+      schemes:
+        - http
+        - https
+      tags:
+        - udf
+  "/search":
+    get:
+      description: Search for an asset(symbol)
+      operationId: symbols
+      parameters:
+        - in: query
+          name: query
+          default: BTS
+          schema:
+            type: string
+          required: true
+          description: String to search
+        - in: query
+          name: type
+          default:
+          schema:
+            type: string
+          required: false
+          description: UDF needs it, Bitshares done have it so not used
+        - in: query
+          name: exchange
+          default:
+          schema:
+            type: string
+          required: false
+          description: UDF needs it, Bitshares done have it so not used
+        - in: query
+          name: limit
+          default:
+          schema:
+            type: string
+          required: false
+          description: UDF needs it, Bitshares done have it so not used
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Found assets
+        500:
+          description: Error processing parameters
+      schemes:
+        - http
+        - https
+      tags:
+        - udf
+  "/history":
+    get:
+      description: Get OHLC data for symbol
+      operationId: history
+      parameters:
+        - in: query
+          name: symbol
+          default: BTS_USD
+          schema:
+            type: string
+          required: true
+          description: Symbol
+        - in: query
+          name: from
+          default: 1513092731
+          schema:
+            type: integer
+          required: true
+          description: Datatime start
+        - in: query
+          name: to
+          default: 1513956731
+          schema:
+            type: integer
+          required: true
+          description: Datetime end
+        - in: query
+          name: resolution
+          default: D
+          schema:
+            type: string
+          required: true
+          description: AKA Tiemframe, candles(15 mins, 1D, etc)
+      produces:
+        - application/json
+      responses:
+        200:
+          description: History in selected period.
+        500:
+          description: Error processing parameters
+      schemes:
+        - http
+        - https
+      tags:
+        - udf
+  "/time":
+    get:
+      description: Get last server time
+      operationId: time
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Current server time
+        500:
+          description: Error processing parameters
+      schemes:
+        - http
+        - https
+      tags:
+        - udf
