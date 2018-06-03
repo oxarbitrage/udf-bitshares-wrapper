@@ -57,4 +57,4 @@ The following calls are exposed and needed for TradingView to display bitshares 
 
 ## Api docs:
 
-http://23.94.69.140:5001/
+http://23.94.69.140:5001/apidocs/
