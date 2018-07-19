@@ -27,7 +27,7 @@ Or by having nginx:
 #vi /etc/nginx/sites-available/udf
 server {
     listen 5001;
-    server_name 23.94.69.140;
+    server_name 185.208.208.184;
     location / {
         include uwsgi_params;
         uwsgi_pass unix:/tmp/udf.sock;
@@ -45,16 +45,16 @@ And then in the root of the project start with:
 
 The following calls are exposed and needed for TradingView to display bitshares dex charts:
 
-- `/config` -  http://23.94.69.140:5001/config
+- `/config` -  http://185.208.208.184:5001/config
 
-- `/symbols` - http://23.94.69.140:5001/symbols?symbol=BTS_USD
+- `/symbols` - http://185.208.208.184:5001/symbols?symbol=BTS_USD
 
-- `/history` - http://23.94.69.140:5001/history?symbol=BTS_USD&resolution=D&from=1513092731&to=1513956731
+- `/history` - http://185.208.208.184:5001/history?symbol=BTS_USD&resolution=D&from=1513092731&to=1513956731
 
-- `/search` - http://23.94.69.140:5001/search?limit=30&query=BLOCK&type=&exchange=
+- `/search` - http://185.208.208.184:5001/search?limit=30&query=BLOCK&type=&exchange=
 
-- `/time` - http://23.94.69.140:5001/time
+- `/time` - http://185.208.208.184:5001/time
 
 ## Api docs:
 
-http://23.94.69.140:5001/apidocs/
+http://185.208.208.184:5001/apidocs/
